@@ -32,6 +32,7 @@ class LinkedList:
         new = Node(data)
         if self.isEmpty():
             self.head = new
+            self.tail = new
         else:
             new.next = self.head
             self.head = new
