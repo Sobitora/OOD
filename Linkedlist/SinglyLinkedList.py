@@ -48,7 +48,7 @@ class LinkedList:
     def insert(self,index,data):
         cur = self.head
         new = Node(data)
-        if index == 0 :
+        if index == 0 or self.isEmpty():
             self.addHead(data)
         for x in range(index-1):
             cur = cur.next
