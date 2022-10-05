@@ -6,6 +6,7 @@ class Node:
 class LinkedList:
     def __init__(self) :
         self.head = None
+        self.tail = None
 
     def size(self):
         cur = self.head
@@ -16,22 +17,23 @@ class LinkedList:
         return n
 
     def append(self,data):
-        p = Node(data)
+        new = Node(data)
         if self.isEmpty():
-            self.head = p
+            self.head = new
         else:
             t = self.head
             while t.next:
                 t = t.next
-            t.next = p
+            t.next = new
+            self.tail = new
 
     def addHead(self,data):
-        p = Node(data)
+        new = Node(data)
         if self.isEmpty():
-            self.head = p
+            self.head = new
         else:
-            p.next = self.head
-            self.head = p
+            new.next = self.head
+            self.head = new
 
     def search(self,data):
         cur = self.head
