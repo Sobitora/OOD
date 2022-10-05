@@ -19,8 +19,7 @@ class LinkedList:
     def append(self,data):
         new = Node(data)
         if self.isEmpty():
-            self.head = new
-            self.tail = new
+            self.addHead(data)
         else:
             t = self.head
             while t.next:
@@ -49,6 +48,8 @@ class LinkedList:
     def insert(self,index,data):
         cur = self.head
         new = Node(data)
+        if index == 0 :
+            self.addHead(data)
         for x in range(index-1):
             cur = cur.next
         new.next = cur.next
