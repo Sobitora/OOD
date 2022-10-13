@@ -32,6 +32,17 @@ class BST:
                         cur = cur.left
         return self.root
 
+    def findbelow(self,node,num,below:list):
+        if node:
+            self.findbelow(node.left,num,below)
+            if (node.data) < num:
+                below.append(str(node.data))
+            self.findbelow(node.right,num,below)
+            # if node < num:
+            #     below += node.data
+        return below
+
+
     def printTree(self, node, level = 0):
         if node != None:
             self.printTree(node.right, level + 1)
@@ -39,7 +50,16 @@ class BST:
             self.printTree(node.left, level + 1)
 
 T = BST()
-inp = [int(i) for i in input('Enter Input : ').split()]
+inp = input("Enter Input : ").replace('|',' ').split(" ")
+num = inp[len(inp)-1]
+inp = inp[:len(inp)-1]
+# print(num)
 for i in inp:
-    root = T.insert(i)
+    root = T.insert(int(i))
+below = T.findbelow(root,int(num),[])
 T.printTree(root)
+print("--------------------------------------------------")
+if below != []:
+    print(f'Below {num} : {" ".join(below)}')
+else:
+    print(f'Below {num} : Not have')

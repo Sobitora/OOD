@@ -38,8 +38,21 @@ class BST:
             print('     ' * level, node)
             self.printTree(node.left, level + 1)
 
+    def printTreeredX3(self, node,num, level = 0):
+        if node != None:
+            self.printTreeredX3(node.right,num , level + 1)
+            if node.data > num:
+                print('     ' * level, node.data*3)
+            else:
+                print('     ' * level, node)
+            self.printTreeredX3(node.left,num , level + 1)
+            
 T = BST()
-inp = [int(i) for i in input('Enter Input : ').split()]
+inp = input("Enter Input : ").replace('/',' ').split(" ")
+num = inp[len(inp)-1]
+inp = inp[:len(inp)-1]
 for i in inp:
-    root = T.insert(i)
+    root = T.insert(int(i))
 T.printTree(root)
+print("--------------------------------------------------")
+T.printTreeredX3(root,int(num))
