@@ -32,32 +32,27 @@ class BST:
                         cur = cur.left
         return self.root
 
-    def findbelow(self,node,num,below:list):
-        if node:
-            self.findbelow(node.left,num,below)
-            if (node.data) < num:
-                below.append(str(node.data))
-            self.findbelow(node.right,num,below)
-        return below
-
-
     def printTree(self, node, level = 0):
         if node != None:
             self.printTree(node.right, level + 1)
             print('     ' * level, node)
             self.printTree(node.left, level + 1)
 
+    def findrank(self,node,num):
+        if node:
+            if (node.data) <= num:
+                return 1+self.findrank(node.left,num)+self.findrank(node.right,num)
+            else:
+                return self.findrank(node.left,num)
+        return 0
+
 T = BST()
-inp = input("Enter Input : ").replace('|',' ').split(" ")
+inp = input("Enter Input : ").replace('/',' ').split(" ")
 num = inp[len(inp)-1]
 inp = inp[:len(inp)-1]
-# print(num)
 for i in inp:
     root = T.insert(int(i))
-below = T.findbelow(root,int(num),[])
+rank = T.findrank(root,int(num))
 T.printTree(root)
 print("--------------------------------------------------")
-if below != []:
-    print(f'Below {num} : {" ".join(below)}')
-else:
-    print(f'Below {num} : Not have')
+print(f'Rank of {num} : {rank}')
