@@ -9,8 +9,7 @@ def sumsubset(count,inp,newlist,num,sumlist:list):
     elif len(inp) != 0:
         newlist.append(inp[0])
         if sum(newlist) == num :
-            sumlist.append(list(newlist))
-            sortlist(sumlist[len(sumlist)-1])
+            sumlist.append(sortlist(list(newlist)))
             sortiteminlist(sumlist)
         newlist.pop(-1)
         sumsubset(count,inp[1:],newlist,num,sumlist)
@@ -24,6 +23,7 @@ def sortlist(l):
                         temp = l[i]
                         l[i] = l[j]
                         l[j] = temp
+    return l
 
 def sortiteminlist(l):
     for i in range(len(l)-1):
