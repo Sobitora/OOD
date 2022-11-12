@@ -59,23 +59,11 @@ class hash:
                 return num
             num += 1
 
-
-
     def print(self):
         for i in range(len(self.table)):
                 print(f'#{i+1}	{self.table[i]}')
         print("----------------------------------------")
 
-def next(num):
-    while True:
-            check = True
-            for i in range(2, int(num/2)+1):
-                if (num % i) == 0:
-                    check = False
-                    break
-            if check:
-                return num
-            num += 1
 
 print(" ***** Rehashing *****")
 inp = input("Enter Input : ").split("/")
