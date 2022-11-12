@@ -19,7 +19,7 @@ class hash:
             if self.dataover():
                 print("****** Data over threshold - Rehash !!! ******")
                 self.rehash()
-                return False
+                return 
             if self.table[ind] != None and col < (self.maxcol+1):
                 if col < self.maxcol:
                     print(f'collision number {col+1} at {ind}')
@@ -28,7 +28,7 @@ class hash:
                 if col == self.maxcol:
                     print("****** Max collision - Rehash !!! ******")
                     self.rehash()
-                    return False
+                    return 
             else:
                 self.table[ind] = data
                 break
@@ -47,6 +47,8 @@ class hash:
     def rehash(self):
         table = self.Nextprime(len(self.table)*2)
         self.table = [None]*table
+        for i in self.data:
+            self.insert(i)
 
     def Nextprime(self,num):
         while True:
@@ -73,11 +75,5 @@ table = int(inp[0])
 maxcol = int(inp[1])
 Threshold = int(inp[2])
 H = hash(table,maxcol,Threshold)
-while True:
-    check = True
-    for i in data:
-        if H.insert(int(i)) == False:
-            check = False
-            break
-    if check:
-        exit(0)
+for i in data:
+    H.insert(int(i))
