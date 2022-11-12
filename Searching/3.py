@@ -40,10 +40,7 @@ class hash:
             print("---------------------------")
 
     def isfull(self):
-        for i in self.table:
-            if i == None:
-                return False
-        return True
+        return None not in self.table
 
 print(" ***** Fun with hashing *****")
 inp=input("Enter Input : ").split("/")
